@@ -9,7 +9,7 @@ import (
 
 // Printf prints a formatted output to the terminal
 func Printf(f string, v ...interface{}) {
-	fmt.Printf(f, v)
+	fmt.Printf(f, v...)
 }
 
 // Color represents a color that can be set
@@ -115,7 +115,7 @@ var f formatter
 func init() {
 	if terminal.IsTerminal(int(os.Stdout.Fd())) == true {
 		f = &escapeFormatter{
-			csi: `\033[`,
+			csi: "\033[",
 		}
 	} else {
 		f = &nullFormater{}
